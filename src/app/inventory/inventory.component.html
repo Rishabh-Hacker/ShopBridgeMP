@@ -1,0 +1,15 @@
+<div class="mat-elevation-z8 ">
+  <mat-card
+    >
+     <mat-card-header>
+     <mat-card-subtitle>Inventory List</mat-card-subtitle>
+     </mat-card-header>
+    <ag-grid-angular
+      style="min-width:200px;width: 780px; height: 383px;"
+      class="ag-theme-alpine"
+      [rowData]="sharedservice.rowData "
+      [columnDefs]="columnDefs"
+    >
+    </ag-grid-angular>
+  </mat-card>
+</div>

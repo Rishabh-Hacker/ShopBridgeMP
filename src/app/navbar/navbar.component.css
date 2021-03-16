@@ -1,0 +1,6 @@
+a{
+    color: #483D8B !important;
+}
+a>.initials::first-letter{
+    font-weight: bold !important;
+}
