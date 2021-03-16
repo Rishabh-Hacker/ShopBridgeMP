@@ -13,5 +13,4 @@ Note you can also use short forms for above steps-
 npm i
 ng s --port 3200 -o (to open directly in browser)
 
-you can also you deployed version of application on 
-(https://stackblitz.com/edit/shopbridgemp)
+you can also view application on https://shopbridgemp.stackblitz.io/ as its deployed on stackbliz
