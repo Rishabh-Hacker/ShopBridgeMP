@@ -6,11 +6,11 @@ Get started
 Clone the repo
 git clone https://github.com/Rishabh-Hacker/ShopBridgeMP
 cd ShopBridgeMP
-Install npm packages using npm install
-Install the npm packages described in the package.json and verify that it works:
+Install npm packages (using npm install)
+Install the npm packages described in the package.json and verify that it works: if not try npm update 
 npm serve --port 3200 to run the angular application, then open browser using localhost:3200
 Note you can also use short forms for above steps-
-npm i
+npm i--for npm install
 ng s --port 3200 -o (to open directly in browser)
 
 you can also view application on https://shopbridgemp.stackblitz.io/ as its deployed on stackbliz

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { SharedService } from "../shared.service";
+import { SharedService } from "../../shared.service";
 @Component({
   selector: "app-inventory",
   templateUrl: "./inventory.component.html",
@@ -8,17 +8,16 @@ import { SharedService } from "../shared.service";
 })
 export class InventoryComponent implements OnInit {
   columnDefs = [
-    { field: "id", sortable: true, filter: true, width: "100" },
+    { field: "id", sortable: true, filter: true, width: 100 },
     { field: "name", sortable: true, filter: true },
     { field: "description", sortable: true, filter: true },
-    { field: "price", sortable: true, filter: true, width: "130" },
+    { field: "price", sortable: true, filter: true, width: 130 },
     {
       field: "image",
       sortable: true,
       filter: true,
-      width: "130",
+      width: 130,
       cellRenderer: function(params) {
-        console.log(params);
         return (
           '<img src="https://source.unsplash.com/random/200x200?sig=' +
           params.rowIndex +
@@ -32,6 +31,7 @@ export class InventoryComponent implements OnInit {
   constructor(public sharedservice: SharedService) {}
 
   ngOnInit() {
+    //calling getInventoryData through MockAPI using shared service
     this.sharedservice.getInventoryData();
   }
 }

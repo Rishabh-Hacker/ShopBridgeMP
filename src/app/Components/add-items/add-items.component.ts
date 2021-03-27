@@ -5,7 +5,7 @@ import {
   FormControl,
   Validators
 } from "@angular/forms";
-import { SharedService } from "../shared.service";
+import { SharedService } from "../../shared.service";
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -22,10 +22,13 @@ export class AddItemsComponent implements OnInit {
   titleAlert: string = "This field is required";
   post: any = "";
   @ViewChild("labelValue")
+//variables used while form validation and fetching value using formsmodule
   labelValue: ElementRef;
   imageFileToUpload: File = null;
+  //positon of mat-snackbar
   horizontalPosition: MatSnackBarHorizontalPosition = "right";
   verticalPosition: MatSnackBarVerticalPosition = "top";
+
   constructor(
     private formBuilder: FormBuilder,
     private sharedservice: SharedService,
@@ -33,9 +36,11 @@ export class AddItemsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    //create, sets and validates forms group
     this.createForm();
     this.setChangeValidate();
   }
+  //create form
   createForm() {
     this.formGroup = this.formBuilder.group({
       name: [null, Validators.required],
@@ -46,6 +51,7 @@ export class AddItemsComponent implements OnInit {
     });
   }
 
+  //validates few fields with respect to form
   setChangeValidate() {
     this.formGroup.get("validate").valueChanges.subscribe(validate => {
       this.formGroup.get("name").setValidators(Validators.required);
@@ -57,14 +63,16 @@ export class AddItemsComponent implements OnInit {
     });
   }
 
+//to fetch name field value
   get name() {
     return this.formGroup.get("name") as FormControl;
   }
-
+//to fetch name field value
   get price() {
     return this.formGroup.get("price") as FormControl;
   }
 
+//on upload file change event
   onFileChange(event) {
     if (event.target.files.length > 0) {
       const Image = event.target.files[0];
@@ -72,11 +80,10 @@ export class AddItemsComponent implements OnInit {
       this.labelValue.nativeElement.innerText = Image.name;
     }
   }
-
+//submission of form to MockAPI using shared service and mat-snackbar for toastr messages
   onSubmit(post) {
     delete post.validate; //removing validate prop which is for validating field
     this.post = post;
-    console.log(this.post);
     this.sharedservice.addInventoryData(this.post);
     this.formGroup.reset();
 
@@ -84,6 +91,7 @@ export class AddItemsComponent implements OnInit {
     Object.keys(this.formGroup.controls).forEach(key => {
       this.formGroup.get(key).setErrors(null);
     });
+
     this.snackBar.open("post Successfull", "Close", {
       duration: 500,
       horizontalPosition: this.horizontalPosition,

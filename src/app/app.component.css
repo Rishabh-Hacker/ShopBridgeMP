@@ -1,10 +1,12 @@
 .main-container {
   display: flex;
 }
+
 .left-container {
   flex: 0 1 40%;
   padding: 0.5em;
 }
+
 .right-container {
   flex: 0 1 60%;
   padding: 0.5em;
